@@ -8,5 +8,4 @@ const pool = new Pool({
     port: 5432,
     database: "e-commerce"
 });
-//console.log(process.env) // remove this after you've confirmed it is working
 module.exports = pool;
