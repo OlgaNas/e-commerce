@@ -2,8 +2,8 @@ const db = require('../db/db');
 
 class OrdersController {
     async createOrder(req, res) {
-        const { customer_id, toy_id, toy_quantity, date, shipper_id, fulfilled, total_price, payment_id } = req.body;
-        const newOrder = await db.query('INSERT INTO orders (customer_id, toy_id, toy_quantity, date, shipper_id, fulfilled, total_price, payment_id) values ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *', [customer_id, toy_id, toy_quantity, date, shipper_id, fulfilled, total_price, payment_id])
+        const { customer_id, basket_id, date, shipper_id, fulfilled, total_price, payment_id } = req.body;
+        const newOrder = await db.query('INSERT INTO orders (customer_id, basket_id, date, shipper_id, fulfilled, total_price, payment_id) values ($1, $2, $3, $4, $5, $6, $7) RETURNING *', [customer_id, basket_id, date, shipper_id, fulfilled, total_price, payment_id])
         res.json(newOrder.rows[0]);
     }
 
@@ -19,8 +19,8 @@ class OrdersController {
     //     res.json(order.rows[0]);
     // }
     async updateOrder(req, res) {
-        const { id, customer_id, toy_id, toy_quantity, date, shipper_id, fulfilled, total_price, payment_id } = req.body;
-        const order = await db.query('UPDATE orders SET customer_id = $1, toy_id = $2, toy_quantity = $3, date = $4, shipper_id = $5, fulfilled = $6, total_price = $7, payment_id = $8 WHERE id = $9 RETURNING *', [customer_id, toy_id, toy_quantity, date, shipper_id, fulfilled, total_price, payment_id, id]);
+        const { id, customer_id, basket_id, date, shipper_id, fulfilled, total_price, payment_id } = req.body;
+        const order = await db.query('UPDATE orders SET customer_id = $1, basket_id = $2, date = $3, shipper_id = $4, fulfilled = $5, total_price = $6, payment_id = $7 WHERE id = $9 RETURNING *', [customer_id, basket_id, date, shipper_id, fulfilled, total_price, payment_id, id]);
         res.json(order.rows[0]);
     }
     async deleteOrder(req, res) {

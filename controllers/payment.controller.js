@@ -3,24 +3,24 @@ const db = require('../db/db');
 class PaymentController {
     async createPayment(req, res) {
         const { customer_id, card_number, card_Exp_M, card_Exp_Y, name_on_card } = req.body;
-        const newPayment = await db.query('INSERT INTO payment (name, surname, address, city, post_code, email, phone, password) values ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *', [name, surname, address, city, post_code, email, phone, password])
-        res.json(newCustomer.rows[0]);
+        const newPayment = await db.query('INSERT INTO payment (customer_id, card_number, card_Exp_M, card_Exp_Y,	name_on_card) values ($1, $2, $3, $4, $5) RETURNING *', [customer_id, card_number, card_Exp_M, card_Exp_Y, name_on_card])
+        res.json(newPayment.rows[0]);
     }
 
-    async getOneCustomer(req, res) {
-        const id = req.params.id;
-        const customer = await db.query('SELECT * FROM customers WHERE id = $1', [id]);
-        res.json(customer.rows[0]);
+    async getOnePaymentByCustomer(req, res) {
+        const customer_id = req.query.id;
+        const payment = await db.query('SELECT * FROM payment WHERE customer_id = $1', [customer_id]);
+        res.json(payment.rows[0]);
     }
-    async updateCustomer(req, res) {
-        const { id, name, surname, address, city, post_code, email, phone, password } = req.body;
-        const customer = await db.query('UPDATE customers SET name = $1, surname = $2, address = $3, city = $4, post_code = $5, email = $6, phone = $7, password = $8 WHERE id = $9 RETURNING *', [name, surname, address, city, post_code, email, phone, password, id]);
-        res.json(customer.rows[0]);
+    async updatePayment(req, res) {
+        const { id, customer_id, card_number, card_Exp_M, card_Exp_Y, name_on_card } = req.body;
+        const payment = await db.query('UPDATE payment SET customer_id = $1, card_number = $2, card_Exp_M = $3, card_Exp_Y = $4, name_on_card = $5 WHERE id = $6 RETURNING *', [customer_id, card_number, card_Exp_M, card_Exp_Y, name_on_card, id]);
+        res.json(payment.rows[0]);
     }
-    async deleteUser(req, res) {
+    async deletePayment(req, res) {
         const id = req.params.id;
-        const customer = await db.query('DELETE FROM customers WHERE id = $1', [id]);
-        res.json(customer.rows[0]);
+        const payment = await db.query('DELETE FROM payment WHERE id = $1', [id]);
+        res.json(payment.rows[0]);
     }
 
 };
