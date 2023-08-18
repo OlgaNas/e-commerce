@@ -35,7 +35,7 @@ function initialize(passport) {
             }
         )
 
-    }
+    };
     passport.use(
         new LocalStrategy({
             usernameField: 'username',

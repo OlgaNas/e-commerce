@@ -73,7 +73,7 @@ class CustomerController {
 
 
     async dashboard(req, res) {
-        res.render('dashboard.ejs', { user: "Conor" })
+        res.render('dashboard.ejs', { user: req.user.name })
     }
 
     async getOneCustomer(req, res) {
