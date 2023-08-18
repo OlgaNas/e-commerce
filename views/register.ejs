@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+</head>
+
+<body>
+
+    <h1>Register</h1>
+    <ul>
+        <% if (typeof errors !=='undefined' ) { %>
+            <% errors.forEach(error=> { %>
+                <li>
+                    <%= error.message %>
+                </li>
+                <% }) %>
+                    <% } %>
+    </ul>
+    <form action="/register" method="POST">
+        <div>
+            <lable for="username">Username</lable>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <lable for="name">Name</lable>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <lable for="surname">Surname</lable>
+            <input type="text" id="surname" name="surname" required>
+        </div>
+
+        <div>
+            <lable for="email">Email</lable>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <lable for="password">Password</lable>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <lable for="address">Address</lable>
+            <input type="text" id="address" name="address" required>
+        </div>
+        <div>
+            <lable for="city">City</lable>
+            <input type="text" id="city" name="city">
+        </div>
+        <div>
+            <lable for="postcode">Postcode</lable>
+            <input type="text" id="postcode" name="postcode" required>
+        </div>
+        <div>
+            <lable for="phone">Phone</lable>
+            <input type="number" id="phone" name="phone">
+        </div>
+
+        <button type='submit'>Register</button>
+    </form>
+    <a href="/login">Login here</a>
+
+</body>
+
+</html>
