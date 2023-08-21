@@ -27,18 +27,18 @@
             <% } %>
     </ul>
 
-    <form action="/login" methode="POST">
+    <form action="/customers/login" method="POST">
         <div>
             <lable for="username">Username</lable>
             <input type="text" id="username" name="username" required>
         </div>
         <div>
             <lable for="password">Password</lable>
-            <input type="text" id="password" name="password" required>
+            <input type="password" id="password" name="password" required>
         </div>
         <button type='submit'>Login</button>
     </form>
-    <a href="/register">Register</a>
+    <a href="/customers/register">Register</a>
 
 </body>
 

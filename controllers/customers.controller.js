@@ -5,6 +5,9 @@ const passport = require('passport');
 
 
 class CustomerController {
+    async logout(req, res) {
+        res.render('login.ejs')
+    }
     //get
     async login(req, res) {
         res.render('login.ejs')
@@ -12,7 +15,7 @@ class CustomerController {
     //post
     async loginUser(req, res, next) {
         passport.authenticate('local', {
-            successRedirect: '/dashboard',
+            successRedirect: '/customers/dashboard',
             failureRedirect: '/login',
             failureFlash: true
         })(req, res, next);

@@ -34,12 +34,12 @@ app.use(passport.session());
 app.use(flash());
 
 app.use(express.json());
-app.use('/', toysRouter);
-app.use('/', customerRouter);
-app.use('/', orderRouter);
-app.use('/', shipperRouter);
-app.use('/', productsInBasketsRouter);
-app.use('/', paymentRouter);
+app.use('/toys', toysRouter);
+app.use('/customers', customerRouter);
+app.use('/orders', orderRouter);
+app.use('/shippers', shipperRouter);
+app.use('/products', productsInBasketsRouter);
+app.use('/payments', paymentRouter);
 
 
 

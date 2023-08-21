@@ -2,6 +2,7 @@ const Router = require('express');
 const router = new Router();
 const CustomerController = require('../controllers/customers.controller');
 
+router.get('/login', CustomerController.logout)
 router.get('/login', CustomerController.login)
 router.post('/login', CustomerController.loginUser)
 router.get('/register', CustomerController.registerPage);
