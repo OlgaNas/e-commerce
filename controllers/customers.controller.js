@@ -61,7 +61,7 @@ class CustomerController {
                             }
                             console.log(results.rows);
                             req.flash('success_msg', 'You are now registered. Please log in');
-                            res.redirect('/login');
+                            res.redirect('/customers/login');
                         });
 
 

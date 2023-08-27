@@ -8,15 +8,16 @@ const paymentRouter = require('./routes/payment.routes');
 const session = require('express-session');
 const flash = require('express-flash');
 const passport = require('passport');
+const helmet = require('helmet');//edit HTTP headers
 
 const initializePassport = require("./controllers/authontication/passport-config");
 initializePassport(passport);
 
 
-
-
 const app = express();
 const PORT = process.env.PORT || 8080;
+
+app.use(helmet());
 
 app.set('view-engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
@@ -24,10 +25,15 @@ app.get('/', (req, res) => {
     res.render('index.ejs');
 });
 
+
 app.use(session({
     secret: 'secret',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookies: {
+        httpOnly: true,
+        secure: false // for development only
+    }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
