@@ -4,9 +4,9 @@ const ToysController = require('../controllers/toys.controller');
 
 // For each function in ToysController create a route
 
-router.get('/toys', ToysController.getAllToys);
-router.get('/toys/:id', ToysController.getOneToyById);
-router.get('/toycategory/:category', ToysController.getToysByCategory);
+router.get('/', ToysController.getAllToys);
+router.get('/:id', ToysController.getOneToyById);
+// router.get('/:category', ToysController.getToysByCategory);
 
 
 

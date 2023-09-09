@@ -4,6 +4,7 @@ const customerRouter = require('./routes/customers.routes');
 const orderRouter = require('./routes/orders.routes');
 const shipperRouter = require('./routes/shippers.routes');
 const productsInBasketsRouter = require('./routes/products_in_baskets.routes');
+const basketRouter = require('./routes/basket.routes');
 const paymentRouter = require('./routes/payment.routes');
 const session = require('express-session');
 const flash = require('express-flash');
@@ -44,8 +45,9 @@ app.use('/toys', toysRouter);
 app.use('/customers', customerRouter);
 app.use('/orders', orderRouter);
 app.use('/shippers', shipperRouter);
-app.use('/products', productsInBasketsRouter);
+app.use('/productsinbaskets', productsInBasketsRouter);
 app.use('/payments', paymentRouter);
+app.use('/basket', basketRouter);
 
 
 

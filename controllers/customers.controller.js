@@ -1,6 +1,8 @@
 const { pool } = require('../db/db');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
+//In the future I will try to use 'express-validator'
+
 
 
 
@@ -19,7 +21,7 @@ class CustomerController {
             failureRedirect: '/login',
             failureFlash: true
         })(req, res, next);
-    };
+    }
     //get
     async registerPage(req, res) {
         res.render('register.ejs')
@@ -88,7 +90,7 @@ class CustomerController {
         const id = req.params.id;
         const { name, surname, address, city, postcode, email, phone, password, username } = req.body;
         const customer = await db.query('UPDATE customers SET name = $1, surname = $2, address = $3, city = $4, postcode = $5, email = $6, phone = $7, password = $8, username = $9 WHERE id = $10 RETURNING *', [name, surname, address, city, postcode, email, phone, password, username, id]);
-        res.json(customer.rows[0]);
+        res.json("Updated Succesfully!");
     }
     async deleteUser(req, res) {
         const id = req.params.id;
