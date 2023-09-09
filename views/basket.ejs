@@ -11,21 +11,25 @@
 
 <body>
 
-    <h1>Toys</h1>
+    <h1>Basket</h1>
     <ul>
-        <% toys.forEach(toy=> { %>
+        <% products.forEach(product=> { %>
             <li>
                 <strong>Name:</strong>
-                <%= toy.name %><br>
-                    <img src="<%= toy.image %>" alt="<%= toy.name %>"><br>
+                <%= products.name %><br>
+                    <img src="<%= products.image %>" alt="<%= products.name %>"><br>
                     <strong>Description:</strong>
-                    <%= toy.description %><br>
+                    <%= products.description %><br>
                         <strong>Price:</strong>
-                        £<%= toy.price %><br>
+                        £<%= products.price %><br>
+                            <strong>Quantity</strong>
+                            <%= product.quantity %>
             </li>
             <button onclick=>>Add to Basket</button>
             <% }); %>
     </ul>
+
+
 
 </body>
 
